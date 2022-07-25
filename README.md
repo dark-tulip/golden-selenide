@@ -1,2 +1,4 @@
-# selenide-tips-and-tricks
-Некоторые полезные шаблоны и фишки по селениду
+#### Колекция элементов по отрицательному cssClass 
+``` Java
+ElementsCollection notCheckedCheckboxes = $$("div.checkboxes").filterBy(not(cssClass("checked")));
+```

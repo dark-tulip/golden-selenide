@@ -7,3 +7,25 @@ ElementsCollection notCheckedCheckboxes = $$("div.checkboxes").filterBy(not(cssC
 ``` Java  
 $("input:checked").should(exist)
 ```
+#### Useful webElement Locator generators 
+``` Java
+  public static String addCodeToLocator(String SelenideLocatorWithDash, String CodeElement) {
+    return String.format("*[selenide='%s%s']", SelenideLocatorWithDash, CodeElement);
+  }
+
+  public static String selenideElemsStartsWith(String SelenideLocatorWithDash) {
+    return String.format("*[selenide^='%s']", SelenideLocatorWithDash);
+  }
+
+  public static String insertIntoTitleStartsWith(String textInTitle) {
+    return String.format("*[title^='%s']", textInTitle);
+  }
+
+  public static String insertIntoTitle(String textInTitle) {
+    return String.format("*[title='%s']", textInTitle);
+  }
+
+  public static String insertIntoSelenide(String SelenideLocator) {
+    return String.format("*[selenide='%s']", SelenideLocator);
+  }
+```

@@ -1,4 +1,4 @@
-# Golden Selenide, my best test practice patterns
+# Golden selenide. My best practices in testing.
 
 in progress...
 

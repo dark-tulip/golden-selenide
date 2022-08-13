@@ -1,3 +1,13 @@
+# Golden Selenide, my best test practice patterns
+
+in progress...
+
+Золотой селенид. Мои лучшие практики по тестированию. (в процессе)
+
+
+
+
+
 #### Колекция элементов, не входящих в заданный класс 
 ``` Java
 ElementsCollection notCheckedCheckboxes = $$("div.checkboxes").filterBy(not(cssClass("checked")));

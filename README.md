@@ -44,7 +44,12 @@ Find in files
 Format current page
 - CTRL + ALT + O
 - CTRL + ALT + L
-
+## Difference between isBlank, isEmpty
+разница в проверке пробела:
+```Java
+StringUtils.isBlank(" ") = true
+StringUtils.isEmpty(" ") = false
+```
 #### Колекция элементов, не входящих в заданный класс 
 ``` Java
 ElementsCollection notCheckedCheckboxes = $$("div.checkboxes").filterBy(not(cssClass("checked")));

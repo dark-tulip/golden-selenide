@@ -35,14 +35,15 @@ Page Object Model - standart test automation pattern. Паттерн это на
 
 IDE trips, на своем проекте я использую идею, Idea 
 
+Переход между вкладками
+- ALT + (->, <-)
+To open any file
+- CTRL + SHIFT + N
+Find in files
+- CTRL + SHIFT + F 
+Format current page
 - CTRL + ALT + O
 - CTRL + ALT + L
-- To open any file
-- CTRL + SHIFT + N
-- Find in files
-- CTRL + SHIFT + F 
-
-
 
 #### Колекция элементов, не входящих в заданный класс 
 ``` Java

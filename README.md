@@ -89,6 +89,14 @@ F12
 Ctrl+Shift+P (Cmd+Shift+P)
 disable JavaScript
 
+# TODO
+
+- Написать пример как я пишу тест на POM
+- добавить больше short-selenide-tips (плюшек селенида)
+- Написать обычный тест (без POM)
+- Мантра автотестера 
+
+
 
 ### Базовый помощник. Hot keys for IDE
 

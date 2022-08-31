@@ -85,6 +85,9 @@ Must have
 
 ### Отключить выполнение скриптов
 
+F12
+Ctrl+Shift+P (Cmd+Shift+P)
+disable JavaScript
 
 
 ### Базовый помощник. Hot keys for IDE

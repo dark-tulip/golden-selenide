@@ -80,7 +80,7 @@ Must have
 5) JS Injection - об этом напишу словечко. На практике не использовала. Можно внедрить веб элементу css-класс или изменить значение атрибута. Для особо отчаянных случаев.
 
 
-Что такое веб элемнет? Это все блоки, точки, кнопки, div-ки из которых состоит веб страница. Откройте devtools (F12 для Chrome браузера) Все что имеет визуально-функциональный блок. Все это WEB ELEMENT-ы. Других названи не поощряю.
+Что такое веб элемнет? Это все блоки, точки, кнопки, div-ки из которых состоит веб страница. Откройте devtools (F12 для Chrome браузера) Все что имеет визуально-функциональный блок. Все это WEB ELEMENT-ы. Других названий не поощряю.
 
 
 ### Отключить выполнение скриптов
@@ -124,35 +124,32 @@ StringUtils.isEmpty(" ") = false
 ``` Java
 ElementsCollection notCheckedCheckboxes = $$("div.checkboxes").filterBy(not(cssClass("checked")));
 ```
+Для начинающих, коллекцию элементов воспринимайте как обычный массив
 
 #### Когда чекбокс включен, но выглядит как readonly
 ``` Java  
 $("input:checked").should(exist)
 ```
 #### Useful webElement Locator generators 
+полезно и очень удобно использовать функции генераторы для составления локаторов, вот некоторые примеры
 ``` Java
-  public static String addCodeToLocator(String SelenideLocatorWithDash, String CodeElement) {
-    return String.format("*[selenide='%s%s']", SelenideLocatorWithDash, CodeElement);
-  }
-
-  public static String selenideElemsStartsWith(String SelenideLocatorWithDash) {
-    return String.format("*[selenide^='%s']", SelenideLocatorWithDash);
-  }
-
   public static String insertIntoTitleStartsWith(String textInTitle) {
-    return String.format("*[title^='%s']", textInTitle);
+    return String.format("*[title^='%s']", textInTitle);  // ^ нужно для поиска элементов, которые содержат атрибут начинающийся с переданного текста
   }
 
   public static String insertIntoTitle(String textInTitle) {
     return String.format("*[title='%s']", textInTitle);
   }
 
-  public static String insertIntoSelenide(String SelenideLocator) {
-    return String.format("*[selenide='%s']", SelenideLocator);
+  public static String insertIntoAttribute(String attribute, String value) {
+    return String.format("*[%s='%s']", attribute, value);
   }
 ```
 
- # ИНСТРУКЦИЯ ПО ПЕРВОМУ КОММИТУ  
+#### Настройка гитлаб раннера (касточный) на локальном сервере
+
+
+# ИНСТРУКЦИЯ ПО ПЕРВОМУ КОММИТУ  
 1) Сначала клонируем репозиторий (репо - это удаленный проект над которым мы все работаем)
 ```
 git clone https://github.com/dark-tulip/aknbt
@@ -178,3 +175,7 @@ git push (отправить изменнения)
 4) Commit and Push
 5) Ничего не трогаем, еще раз нажимаем пуш
 ```
+
+Merge - объединение проектов (например слить с dev на master ветку)
+Сherry pick - вынуть изменения (некоторые коммиты из другой ветки)
+Revert - сбросить все что вы написали до посленего pull-a

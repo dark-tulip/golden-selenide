@@ -247,8 +247,8 @@ git push (отправить изменнения)
 - Revert - сбросить все что вы написали до последнего pull-a
 
 ## Запуск набора тестов через пакет
-Про test-suit-ы на testNG. test-suit - тестовый костюм или сборка для запуска тестовой группы. На конце названия пакета должно быть (.*) иначе не увидит всех классов внутри пакета.
-
+Про test-suit-ы на testNG. test-suit - тестовый костюм или сборка для запуска тестовой группы. На конце названия пакета должно быть `(.*)` иначе не увидит всех классов внутри пакета.
+``` xml
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="sampleTest" parallel="false">
 
@@ -259,6 +259,9 @@ git push (отправить изменнения)
  </test>
 
 </suite>
+```
+<b>verbosity</b>. The verbosity level is 0 to 10, where 10 is most detailed. -1 will put TestNG in debug mode.
+<b>reserve-order</b>. True (по умолчанию). TestNG will run your tests in the order they are found in the XML file. False для хаотичного порядка.
 
 # TODO
 

@@ -246,6 +246,20 @@ git push (отправить изменнения)
 - Cherry pick - вынуть изменения (некоторые коммиты из другой ветки)
 - Revert - сбросить все что вы написали до последнего pull-a
 
+## Запуск набора тестов через пакет
+Про test-suit-ы на testNG. test-suit - тестовый костюм или сборка для запуска тестовой группы. На конце названия пакета должно быть (.*) иначе не увидит всех классов внутри пакета.
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="sampleTest" parallel="false">
+
+ <test name="sample-Test" preserve-order="true" verbose="2">
+   <packages>
+     <package name="tests.with_proxy.*"/>
+   </packages>
+ </test>
+
+</suite>
+
 # TODO
 
 - Написать пример как я пишу тест на POM

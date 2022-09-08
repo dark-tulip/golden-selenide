@@ -250,18 +250,82 @@ git push (отправить изменнения)
 Про test-suit-ы на testNG. test-suit - тестовый костюм или сборка для запуска тестовой группы. На конце названия пакета должно быть `(.*)` иначе не увидит всех классов внутри пакета.
 ``` xml
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="sampleTest" parallel="false">
-
- <test name="sample-Test" preserve-order="true" verbose="2">
+<suite name="exampleSuit" parallel="false">
+ <test name="example-test" preserve-order="true" verbose="2">
    <packages>
-     <package name="tests.with_proxy.*"/>
+     <package name="tests.my_tests_pkg.*"/>
    </packages>
  </test>
-
 </suite>
 ```
-<b>verbosity</b>. The verbosity level is 0 to 10, where 10 is most detailed. -1 will put TestNG in debug mode.
+<b>verbosity</b>. The verbosity level is 0 to 10, where 10 is most detailed. -1 will put TestNG in debug mode.<br>
 <b>reserve-order</b>. True (по умолчанию). TestNG will run your tests in the order they are found in the XML file. False для хаотичного порядка.
+
+
+## Повторитель упавших тестов, атррибут внутри аннотации
+``` Java
+// RetryAnalyzer.java
+public class RetryAnalyzer implements IRetryAnalyzer {
+  int counter = 0;
+  int retryLimit = 2;
+  /*
+   * (non-Javadoc)
+   * @see org.testng.IRetryAnalyzer#retry(org.testng.ITestResult)
+   *
+   * This method decides how many times a test needs to be rerun.
+   * TestNg will call this method every time a test fails. So we
+   * can put some code in here to decide when to rerun the test.
+   *
+   * Note: This method will return true if a tests needs to be retried
+   * and false it not.
+   *
+   */
+  @Override
+  public boolean retry(ITestResult result) {
+    if(counter < retryLimit)
+    {
+      counter++;
+      return true;
+    }
+    return false;
+  }
+}
+```
+### How to use?
+``` Java
+@Test(retryAnalyzer = RetryAnalyzer.class)
+public void checkPassword() {
+  // here goes your steps
+}
+```
+
+## Повторитель упавших тестов для целого набора
+Внутри xml test suit file добавляем листенер
+``` xml
+  <!-- повторитель упавших тестов -->
+  <listeners>
+    <listener class-name="test_utils.AnnotationTransformer"/>
+  </listeners>
+```
+
+``` Java
+// AnnotationTransformer.java
+/**
+ * Этот класс нужен для применения retry analyzer на xml-test-suit файл с помощью listener
+ * we just need to add it as a listener in the testng run xml.
+ * <p>
+ * <a href="https://www.toolsqa.com/testng/retry-failed-tests-testng/"></a>
+ */
+public class AnnotationTransformer implements IAnnotationTransformer {
+  @Override
+  public void transform(ITestAnnotation annotation,
+                        Class testClass,
+                        Constructor testConstructor,
+                        Method testMethod) {
+    annotation.setRetryAnalyzer(RetryAnalyzer.class);
+  }
+}
+```
 
 ## Кронтабы. Plan your tests
 Кронтабы это планировщики задач, которые запускают таску в определенное время. Хорошо бы им научиться чтобы запускать тесты каждый час днем, каждый месяц или каждый час
@@ -290,6 +354,21 @@ git push (отправить изменнения)
 - добавить больше short-selenide-tips (плюшек селенида)
 - Написать обычный тест (без POM)
 - Мантра автотестера 
+
+### Gradle-TestNG Не запускает определенный test-suit.xml task
+
+Build project with TestNg 7.1.0 failed
+Внимательно проверьте путь к запускаемому пакету внутри gradle task-и. Все утилиты и настройки для тестов, данные для подготовки и мокапы нужно хранить в отдельном пакете `test_utils` или `utils`. Иначе при запуске отдельного test-suit градл может подумать что классы без аннотации Test инвалидные и не запуститься
+
+
+
+
+
+
+
+
+
+
 
 
 Золотой Selenide. Мои лучшие практики по тестированию
@@ -516,6 +595,8 @@ StringUtils.isEmpty(" ") = false
 ElementsCollection notCheckedCheckboxes = $$("div.checkboxes").filterBy(not(cssClass("checked")));
 /* Проверка что чекбокс включен */
 $("input:checked").should(exist)
+
+
 
 Напоследок
 

@@ -159,6 +159,7 @@ public class AnnotationTransformer implements IAnnotationTransformer {
 - Написать обычный тест (без POM)
 - Мантра автотестера 
 - Настройка гитлаб раннера (кастомный) на локальном сервере
+- Посвятить отдельную тему загрузке файлов (HTTP GET, PROXY, With extension or without)
 
 ### Gradle-TestNG Не запускает определенный test-suit.xml task
 

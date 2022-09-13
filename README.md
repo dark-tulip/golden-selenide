@@ -6,7 +6,7 @@
 
 
 
-# ИНСТРУКЦИЯ ПО ПЕРВОМУ КОММИТУ  
+### ИНСТРУКЦИЯ ПО ПЕРВОМУ КОММИТУ  
 1) Сначала клонируем репозиторий (репо - это удаленный проект над которым мы все работаем)
 ```
 git clone https://github.com/dark-tulip/aknbt
@@ -40,6 +40,7 @@ git push (отправить изменнения)
 ## Запуск набора тестов через пакет
 Про test-suit-ы на testNG. test-suit - тестовый костюм или сборка для запуска тестовой группы. На конце названия пакета должно быть `(.*)` иначе не увидит всех классов внутри пакета.
 ``` xml
+<!-- test-suit.xml -->
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="exampleSuit" parallel="false">
  <test name="example-test" preserve-order="true" verbose="2">
@@ -93,12 +94,24 @@ public void checkPassword() {
 ## Повторитель упавших тестов для целого набора
 Внутри xml test suit file добавляем листенер
 ``` xml
+<!-- test-suit.xml -->
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="exampleSuit" parallel="false">
+ 
   <!-- повторитель упавших тестов -->
   <listeners>
     <listener class-name="test_utils.AnnotationTransformer"/>
   </listeners>
-```
 
+ <test name="example-test" preserve-order="true" verbose="2">
+   <packages>
+     <package name="tests.my_tests_pkg.*"/>
+   </packages>
+ </test>
+ 
+</suite>
+```
 ``` Java
 // AnnotationTransformer.java
 /**

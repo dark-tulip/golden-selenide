@@ -166,3 +166,17 @@ public class AnnotationTransformer implements IAnnotationTransformer {
 Build project with TestNg 7.1.0 failed
 Внимательно проверьте путь к запускаемому пакету внутри gradle task-и. Все утилиты и настройки для тестов, данные для подготовки и мокапы нужно хранить в отдельном пакете `test_utils` или `utils`. Иначе при запуске отдельного test-suit градл может подумать что классы без аннотации Test инвалидные и не запуститься
 
+
+### Как убрать SLF4J 
+```
+SLF4J: No SLF4J providers were found.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#noProviders for further details.
+```
+у вас не настроен или не найден логгер
+Внутри Build Gradle добавляем dependencies для логгера:
+``` 
+dependencies {
+  testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0'
+}
+```

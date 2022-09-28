@@ -37,6 +37,22 @@ git push (отправить изменнения)
 - Cherry pick - вынуть изменения (некоторые коммиты из другой ветки)
 - Revert - сбросить все что вы написали до последнего pull-a
 
+``` bash
+# Переход на новую ветку
+git checkout -b branch-name
+git add .
+git commit -m "message"
+git push
+```
+### GITLAB :: SSH keygen and clone with SSH
+``` 
+cd ~/.ssh
+ssh-keygen -t ed25519
+# Then paste on gitlab profile
+https://gitlab.com/-/profile/keys -> SSH Keys
+And paste your public key here
+```
+
 ## Запуск набора тестов через пакет
 Про test-suit-ы на testNG. test-suit - тестовый костюм или сборка для запуска тестовой группы. На конце названия пакета должно быть `(.*)` иначе не увидит всех классов внутри пакета.
 ``` xml

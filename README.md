@@ -1,6 +1,10 @@
 # Golden selenide. My best testing practices. Part 2
 
-#### ЕСЛИ У ВАС ЕСТЬ ПРЕДЛОЖЕНИЯ, PLEASE CONTACT ME ON <a href="https://t.me/dark_tulip">TELEGRAM</a>
+### ЕСЛИ У ВАС ЕСТЬ ПРЕДЛОЖЕНИЯ, PLEASE CONTACT ME ON <a href="https://t.me/dark_tulip">TELEGRAM</a>
+### Как правильно должен падать тест?
+- Упавший тест это хороший баг репорт
+- Добавляйте сообщения к assert-ам
+- Называйте тесты понятно
 
 Это черновик возможного продолжения данной статьи, https://habr.com/ru/post/687246/
 

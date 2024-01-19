@@ -198,3 +198,11 @@ dependencies {
   testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0'
 }
 ```
+
+### Запускать тесты в N процессов
+```groovy
+# build.gradle
+test {
+ maxParallelForks = 5
+}
+```
